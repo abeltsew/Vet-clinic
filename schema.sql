@@ -8,3 +8,7 @@ CREATE TABLE animals (
     neutered bit,
     weight_kg float,  
 );
+
+
+    ALTER TABLE animals
+    ADD COLUMN species varchar(50);
