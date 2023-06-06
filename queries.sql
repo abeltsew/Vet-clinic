@@ -116,3 +116,18 @@ WHERE ao.num =  (select max(max_animals.num)FROM (SELECT count(a.*) as num, a.ow
 FROM animals a JOIN owners o
 ON a.owner_id = o.id
 GROUP BY a.owner_id) max_animals);
+
+
+SELECT  animals.name
+FROM visits JOIN vets ON  visits.vet_id = vets.id JOIN animals ON visits.animal_id = animals.id
+WHERE vets.name = 'William Tatcher' 
+    AND
+visits.date_of_visit = ( SELECT max(date_of_visit)
+FROM visits JOIN vets ON  visits.vet_id = vets.id
+WHERE vets.name = 'William Tatcher'
+);
+
+
+SELECT DISTINCT animals.name, vets.name
+FROM visits JOIN vets ON  visits.vet_id = vets.id JOIN animals ON visits.animal_id = animals.id
+Where vets.name ='Stephanie Mendez';

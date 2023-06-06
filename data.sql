@@ -54,3 +54,35 @@ WHERE name in ('Charmander','Squirtle', 'Blossom' );
 UPDATE animals
 SET owner_id = (select id from owners where full_name = 'Dean Winchester' LIMIT 1)
 WHERE name in( 'Boarmon','Angemon' );
+
+
+INSERT INTO vets (name, age, date_of_graduation) VALUES
+    ('William Tatcher',45,'4-23-2000'),
+    ('Maisy Smith',26,'1-17-2019'),
+    ('Stephanie Mendez',64,'5-4-1981'),
+    ('Jack Harkness', 38, '6-8-2008');
+
+INSERT INTO specializations VALUES (1,1),(3,1),(3,2),(4,2);
+
+
+INSERT INTO visits (animal_id,vet_id, date_of_visit)
+VALUES 
+    (1,1,'5-24-2020'),
+    (1,3,'7-22-2020'),
+    (2,4,'2-2-2021'),
+    (3,2,'1-5-2020'),
+    (3,2,'3-8-2020'),
+    (3,2,'5-14-2020'),
+    (4,3,'5-4-2021'),
+    (5,4,'2-24-2021'),
+    (6,2,'12-21-2019'),
+    (6,2,'4-7-2021'),
+    (7,3,'9-29-2019'),
+    (8,4,'10-3-2020'),
+    (8,4,'11-4-2020'),
+    (9,2,'1-24-2019'),
+    (9,2,'5-15-2019'),
+    (9,2,'2-27-2020'),
+    (9,2,'8-3-2020'),
+    (10,3,'5-24-2020'),
+    (10,1,'1-11-2021');
