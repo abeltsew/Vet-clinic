@@ -7,6 +7,7 @@ CREATE TABLE animals (
     escape_attempts int,
     neutered bit,
     weight_kg float,  
+    PRIMARY KEY (id)
 );
 
 
@@ -50,3 +51,33 @@ CREATE TABLE animals (
         ON DELETE CASCADE;
 
     
+
+    CREATE TABLE vets (
+        id int generated always as identity,
+        name varchar(50),
+        age int ,
+        date_of_graduation date,
+        PRIMARY KEY(id)
+    );
+
+
+    CREATE TABLE specializations (
+        vet_id int,
+        species_id int,
+        CONSTRAINT fk_vets FOREIGN key(vet_id)
+        REFERENCES vets(id),
+        CONSTRAINT fk_species_spec FOREIGN KEY(species_id)
+        REFERENCES species(id),
+        PRIMARY KEY(vet_id,species_id)
+    );
+
+    CREATE TABLE visits (
+        animal_id int,
+        vet_id int,
+        date_of_visit date,
+        CONSTRAINT fk_animal_visit FOREIGN key(animal_id) 
+        REFERENCES animals(id),
+        CONSTRAINT fk_vets_visit FOREIGN key(vet_id)
+        REFERENCES vets(id),
+        PRIMARY KEY(animal_id,vet_id,date_of_visit)
+    );
