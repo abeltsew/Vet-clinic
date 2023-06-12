@@ -51,7 +51,6 @@ CREATE TABLE animals (
         ON DELETE CASCADE;
 
     
-
     CREATE TABLE vets (
         id int generated always as identity,
         name varchar(50),
@@ -81,3 +80,17 @@ CREATE TABLE animals (
         REFERENCES vets(id),
         PRIMARY KEY(animal_id,vet_id,date_of_visit)
     );
+
+
+    ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+    ALTER TABLE visits DROP CONSTRAINT visits_pkey;
+
+
+    -- Create index to improve performance
+
+    CREATE INDEX ix_animal_id_visits ON visits(animal_id);
+
+    CREATE INDEX ix_vet_id_visits ON visits(vet_id);
+
+    CREATE INDEX ix_email_owners ON owners(email);
